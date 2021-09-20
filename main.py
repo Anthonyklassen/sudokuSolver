@@ -12,16 +12,18 @@ board = [
 
 
 def solve(board):
+  # find the next empty sqaure
   find = find_empty(board)
+  # if find does not find an empty square, board is compete and returns True
   if not find:
     return True
   else:
     row, col = find
-
+  # iterate through integers 1 to 9 and find if the int is valid
   for i in range(1, 10):
     if valid(board, i, (row, col)):
       board[row][col] = i
-
+      # if int is valid call solve to find the next empty piece
       if solve(board):
         return True
       board[row][col] = 0
